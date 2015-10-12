@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="titulo">Novo Tema</ui:define>
+	
+	<ui:define name="corpo">
+		
+		<h:form id="frmTema">
+		
+			<h1>Novo Tema</h1>
+		
+			<p:messages autoUpdate="true" closable="true"/>
+			
+			<p:panelGrid columns="2" styleClass="ui-noborder">
+				<p:outputLabel value="Nome:" for="inputTema"/>
+				<p:inputText id="inputTema" maxlength="60" 
+				value="#{cadastroTemaBean.tema.nome}"/>
+				
+				<h:panelGroup />
+				<p:commandButton value="Cadastrar" styleClass="btn-cadastrar"
+				action="#{cadastroTemaBean.salvar}"/>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

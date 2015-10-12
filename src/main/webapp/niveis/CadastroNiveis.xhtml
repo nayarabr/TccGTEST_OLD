@@ -1,0 +1,35 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="titulo">Novo Nível</ui:define>
+	
+	<ui:define name="corpo">
+			
+		<h:form id="frmNivel">
+		
+			<h1>Novo Nível</h1>
+			
+			<p:messages autoUpdate="true" closable="true"/>
+			
+			<p:panelGrid columns="2" styleClass="ui-noborder">
+				<p:outputLabel value="Nome:" for="nomeNivel"/>
+				<p:inputText id="nomeNivel" maxlength="30"
+				value="#{cadastroNivelBean.nivel.nome}"/>
+				
+				<p:outputLabel value="Descrição: " for="descricaoNivel"/>
+				<p:inputText id="descricaoNivel" maxlength="60"
+				value="#{cadastroNivelBean.nivel.descricao}"/>
+				 
+				<h:panelGroup />
+				<p:commandButton value="Cadastrar" styleClass="btn-cadastrar"
+				 action="#{cadastroNivelBean.salvar}"/>
+			</p:panelGrid>
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
