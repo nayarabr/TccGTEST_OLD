@@ -22,5 +22,4 @@ public class Temas implements Serializable {
 		trx.commit();
 		return tema;
 	}
-
 }

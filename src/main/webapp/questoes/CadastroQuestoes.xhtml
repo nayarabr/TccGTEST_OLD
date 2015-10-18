@@ -8,21 +8,28 @@
 	<ui:define name="titulo">Nova Questão</ui:define>
 
 	<ui:define name="corpo">
-		<h1>Nova Questão</h1>
 
+		<h1>Nova Questão</h1>
+		
+		<f:metadata>
+			<f:event listener="#{questaoBean.inicializar}"
+				type="preRenderView" />
+		</f:metadata>
 		<h:form id="frmQuestao">
 			<p:growl autoUpdate="true" sticky="true" />
 
 			<p:panelGrid columns="2" styleClass="ui-noborder">
 				<p:outputLabel value="Tema:" for="Tema" />
 				<p:selectOneMenu id="Tema" required="true">
-					<f:selectItem itemLabel="Selecione o tema" itemValue="" />
+					<f:selectItem itemLabel="Selecione o tema" />
+					<f:selectItems value="#{questaoBean.listaTemas}" var="tema"
+						itemValue="#{tema}" itemLabel="#{tema.nome}" />
 					<!-- 					adicionar opções depois -->
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Dificuldade:" for="dificuldade" />
 				<p:selectOneMenu id="dificuldade" required="true">
-					<f:selectItem itemLabel="Selecione a dificuldade"/>
+					<f:selectItem itemLabel="Selecione a dificuldade" />
 					<f:selectItem itemLabel="1" itemValue="1" />
 					<f:selectItem itemLabel="2" itemValue="2" />
 					<f:selectItem itemLabel="3" itemValue="3" />
@@ -48,14 +55,15 @@
 				<f:selectItem itemValue="alternativa3" />
 				<f:selectItem itemValue="alternativa4" />
 			</p:selectOneRadio>
-			
-			<p:panelGrid columns="3" id="tabelaAlternativas" styleClass="ui-noborder">
+
+			<p:panelGrid columns="3" id="tabelaAlternativas"
+				styleClass="ui-noborder">
 
 				<p:outputLabel value="Alternativa 1:" for="alternativa1" />
 				<p:inputTextarea id="alternativa1" maxlength="255" cols="60"
 					rows="2" autoResize="false" />
 				<p:radioButton id="radioAlternativa1" for="selectAlternativas"
-					itemIndex="0" >
+					itemIndex="0">
 				</p:radioButton>
 
 
@@ -63,28 +71,28 @@
 				<p:inputTextarea id="alternativa2" maxlength="255" cols="60"
 					rows="2" autoResize="false" />
 				<p:radioButton id="radioAlternativa2" for="selectAlternativas"
-					itemIndex="1" >
+					itemIndex="1">
 				</p:radioButton>
 
 				<p:outputLabel value="Alternativa 3:" for="alternativa3" />
 				<p:inputTextarea id="alternativa3" maxlength="255" cols="60"
 					rows="2" autoResize="false" />
 				<p:radioButton id="radioAlternativa3" for="selectAlternativas"
-					itemIndex="2" >
+					itemIndex="2">
 				</p:radioButton>
 
 				<p:outputLabel value="Alternativa 4:" for="alternativa4" />
 				<p:inputTextarea id="alternativa4" maxlength="255" cols="60"
 					rows="2" autoResize="false" />
 				<p:radioButton id="radioAlternativa4" for="selectAlternativas"
-					itemIndex="3" >
+					itemIndex="3">
 				</p:radioButton>
-			
-				<p:outputLabel value="Status:"/>
-				<p:selectBooleanCheckbox value="#{}"/>
+
+				<p:outputLabel value="Status:" />
 
 				<h:panelGroup />
-				<p:commandButton value="Cadastrar" styleClass="btn-cadastrar" icon="ui-icon-check"/>
+				<p:commandButton value="Cadastrar" styleClass="btn-cadastrar"
+					icon="ui-icon-check" />
 
 			</p:panelGrid>
 		</h:form>
