@@ -18,6 +18,12 @@ public class Tema implements Serializable {
 
 	private Long id;
 	private String nome;
+	
+	public Tema(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
 
 	@Id
 	@GeneratedValue

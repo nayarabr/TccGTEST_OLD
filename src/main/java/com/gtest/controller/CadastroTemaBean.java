@@ -2,15 +2,14 @@ package com.gtest.controller;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.gtest.model.Tema;
 import com.gtest.service.CadastroTemaService;
-import com.gtest.util.jsf.FacesUtil;
 
-@Named
+@Named("cadastroTemaBean")
 @ViewScoped
 public class CadastroTemaBean implements Serializable {
 
@@ -19,21 +18,38 @@ public class CadastroTemaBean implements Serializable {
 	@Inject
 	private CadastroTemaService cadastroTemaService;
 
+	@Inject
 	private Tema tema;
 
-	private void limpar() {
-		tema = new Tema();
-	}
-
 	public CadastroTemaBean() {
-		limpar();
+		tema = new Tema((long) Math.random(), "Nayra");
 	}
 
+	// private void limpar() {
+	// tema = new Tema();
+	// }
+	//
+	// public CadastroTemaBean() {
+	// limpar();
+	// }
+	//
 	public void salvar() {
-		this.tema = cadastroTemaService.salvar(this.tema);
-		limpar();
-		FacesUtil.addInfoMessage("Tema salvo com sucesso!");
+		// this.tema = cadastroTemaService.salvar(this.tema);
+		// limpar();
+		// FacesUtil.addInfoMessage("Tema salvo com sucesso!");
 
+	}
+
+	public CadastroTemaService getCadastroTemaService() {
+		return cadastroTemaService;
+	}
+
+	public void setCadastroTemaService(CadastroTemaService cadastroTemaService) {
+		this.cadastroTemaService = cadastroTemaService;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
 	public Tema getTema() {

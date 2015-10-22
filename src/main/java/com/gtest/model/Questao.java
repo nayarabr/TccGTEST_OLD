@@ -7,8 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +25,7 @@ public class Questao implements Serializable {
 	private Tema tema;
 	private int dificuldade;
 	private String enunciado;
-	private StatusQuestao status;
+//	private StatusQuestao status;
 
 	private List<Alternativa> alternativas  = new ArrayList<>();
 	
@@ -71,15 +69,15 @@ public class Questao implements Serializable {
 		this.enunciado = enunciado;
 	}
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 10)
-	public StatusQuestao getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusQuestao status) {
-		this.status = status;
-	}
+//	@Enumerated(EnumType.STRING)
+//	@Column(nullable = false, length = 10)
+//	public StatusQuestao getStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(StatusQuestao status) {
+//		this.status = status;
+//	}
 	
 	@OneToMany(mappedBy = "alternativa", cascade = CascadeType.ALL, orphanRemoval = true) //cascade: hibernate já associa as alternativas automaticamente
 	public List<Alternativa> getAlternativas() {
